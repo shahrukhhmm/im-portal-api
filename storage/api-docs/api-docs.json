@@ -1,0 +1,2952 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "IM-PORTAL APIs Documentation",
+        "description": "ImPortal OpenApi description",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "IM-PORTAL API Server"
+        }
+    ],
+    "paths": {
+        "/action": {
+            "get": {
+                "tags": [
+                    "Action"
+                ],
+                "operationId": "actionList",
+                "responses": {
+                    "200": {
+                        "description": "Action Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ActionResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/application": {
+            "get": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "ApplicationList",
+                "responses": {
+                    "200": {
+                        "description": "Application Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/ApplicationResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "AddApplication",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Application"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Application Create",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Application"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/application/{id}": {
+            "get": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "GetApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a Application",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AppSettingResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "UpdateApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Application"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Application Update",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Application"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "DeleteApplication",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Application Delete",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/application/setting/{id}": {
+            "put": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "ApplicationSetting",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ApplicationSetting"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Application Setting",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ApplicationSetting"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/application/getSetting/{id}": {
+            "get": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "GetApplicationSetting",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Application Setting",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AppSettingResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/application/getApplicationBrands": {
+            "get": {
+                "tags": [
+                    "Application"
+                ],
+                "operationId": "getApplicationBrands",
+                "responses": {
+                    "200": {
+                        "description": "get Application Brand list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/AppBrandResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "AuthLogin",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Login"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/LoginResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/inquiry/{publicKey}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "UserInquiry",
+                "parameters": [
+                    {
+                        "name": "publicKey",
+                        "in": "path",
+                        "description": "public Key",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User Inquiry",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InquiryResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/appInquiry/{publicKey}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "appInquiry",
+                "parameters": [
+                    {
+                        "name": "publicKey",
+                        "in": "path",
+                        "description": "public Key",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "App Inquiry",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/InquiryResource"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/getUserInfo": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "getUserInfo",
+                "responses": {
+                    "200": {
+                        "description": "Get User Info",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/getAppInfo/{appId}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "getAppInfo",
+                "parameters": [
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "App Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get App Url",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/AppUrlResource"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/logout": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "operationId": "userLogout",
+                "responses": {
+                    "200": {
+                        "description": "User logout"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand": {
+            "get": {
+                "tags": [
+                    "Brand"
+                ],
+                "operationId": "brandList",
+                "responses": {
+                    "200": {
+                        "description": "Brand Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/BrandResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Brand"
+                ],
+                "operationId": "AddBrand",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Brand"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Brand"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand/{id}": {
+            "get": {
+                "tags": [
+                    "Brand"
+                ],
+                "operationId": "showBrand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a Brand",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/BrandResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Brand"
+                ],
+                "operationId": "UpdateBrand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Brand"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Brand Update",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Brand"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Brand"
+                ],
+                "operationId": "deleteBrand",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Brand Delete",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand/languages/options": {
+            "get": {
+                "tags": [
+                    "Language"
+                ],
+                "operationId": "LanguageOptions",
+                "responses": {
+                    "201": {
+                        "description": "List of available languages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Language"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand/languages/{brandID}": {
+            "get": {
+                "tags": [
+                    "Language"
+                ],
+                "operationId": "BrandLanguageIndex",
+                "parameters": [
+                    {
+                        "name": "brandID",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Get Brand Languages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BrandLanguage"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Language"
+                ],
+                "operationId": "BrandLanguageCreate",
+                "parameters": [
+                    {
+                        "name": "brandID",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "language_id": {
+                                        "type": "integer"
+                                    },
+                                    "primary": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Get Brand Languages",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/BrandLanguage"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/brand/languages/{brandLanguageID}": {
+            "delete": {
+                "tags": [
+                    "Language"
+                ],
+                "operationId": "brandLanguageDelete",
+                "parameters": [
+                    {
+                        "name": "brandLanguageID",
+                        "in": "path",
+                        "description": "Brand Language ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "language has been deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "language has been deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/entity": {
+            "get": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "entityList",
+                "responses": {
+                    "200": {
+                        "description": "Entity Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Entity"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "AddEntity",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Entity"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Entity Create",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Entity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/entity/getEntities/{appId}": {
+            "get": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "entityListByAppId",
+                "parameters": [
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "Application Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get Entity list By App Id",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/EntityResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/entity/{id}": {
+            "get": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "FindEntity",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Entity id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Entity"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "updateEntity",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Entity ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Entity"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update a Entity.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Entity"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Entity"
+                ],
+                "operationId": "deleteEntity",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Entity ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/log": {
+            "post": {
+                "tags": [
+                    "Log"
+                ],
+                "operationId": "CreateLog",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Log"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Create Log",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Log"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/organization": {
+            "get": {
+                "tags": [
+                    "Organization"
+                ],
+                "operationId": "OrganizationList",
+                "responses": {
+                    "200": {
+                        "description": "Organization Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/OrganizationResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Organization"
+                ],
+                "operationId": "AddOrganization",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Organization"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Organization Create",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organization"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/organization/{id}": {
+            "get": {
+                "tags": [
+                    "Organization"
+                ],
+                "operationId": "GetOrganization",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a Organization",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/Organization"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Organization"
+                ],
+                "operationId": "UpdateOrganization",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Organization"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Organization Update",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Organization"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/organizations/{id}": {
+            "delete": {
+                "tags": [
+                    "Organization"
+                ],
+                "operationId": "DeleteOrganization",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Organization ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Organization Delete",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth/password/forgot": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Forgot Password",
+                "description": "User Can retrive Password Here",
+                "operationId": "ForgotPassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "format": "string",
+                                        "default": "mail@gmail.com"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reset Password Email Sent Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "EmailSent"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "format": "string",
+                                            "default": "email not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/auth/password/reset": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Reset Password",
+                "description": "User can reset their password with token emailed",
+                "operationId": "ResetPassword",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "format": "string",
+                                        "default": "mail@gmail.com"
+                                    },
+                                    "password": {
+                                        "format": "string",
+                                        "default": "*****"
+                                    },
+                                    "token": {
+                                        "format": "string",
+                                        "default": "xxxxx"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Reset Password Email Sent Successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "description": "message",
+                                            "format": "string",
+                                            "default": "PasswordReset"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "format": "string",
+                                            "default": "email not found"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                }
+            }
+        },
+        "/role": {
+            "get": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "roleList",
+                "responses": {
+                    "200": {
+                        "description": "Get Role list"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "AddRole",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Role"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Role Create",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/role/{id}": {
+            "get": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "FindRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RoleResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "updateRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Role"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Update a Role.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Role"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "deleteRole",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Role ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Delete Role",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/role/setRoleAccess": {
+            "put": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "setRoleAccess",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/RoleAccess"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Set Role Access",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/RoleAccess"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/role/getRoleAccess/{appId}/{roleId}": {
+            "get": {
+                "tags": [
+                    "Role"
+                ],
+                "operationId": "getRoleAccess",
+                "parameters": [
+                    {
+                        "name": "appId",
+                        "in": "path",
+                        "description": "Application ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "description": "Role ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "202": {
+                        "description": "Get Role Access",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/RoleAccess"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "UserList",
+                "responses": {
+                    "200": {
+                        "description": "User Collection",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/UserResource"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/register": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "AddUser",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Register",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResource"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "getUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Find a user",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "UpdateUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/User"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "User Update",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserResource"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "DeleteUser",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "User Delete",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "404": {
+                        "description": "Resource Not Found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/setUserApplication/{userId}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "setUserApplication",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "app_id": {
+                                        "type": "integer"
+                                    },
+                                    "brand_id": {
+                                        "type": "integer"
+                                    },
+                                    "role_id": {
+                                        "type": "integer"
+                                    },
+                                    "access": {
+                                        "description": "1: attach, 0: detach",
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Set User Application",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "application_id": {
+                                            "type": "integer"
+                                        },
+                                        "brand_id": {
+                                            "type": "integer"
+                                        },
+                                        "role_id": {
+                                            "type": "integer"
+                                        },
+                                        "access": {
+                                            "description": "1: attach, 0: detach",
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/setUserApplications/{userId}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "SetUserAccess",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserAccess"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "202": {
+                        "description": "Set User Access",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/UserAccess"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/getUserApplications/{userId}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "getUserApplications",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "path",
+                        "description": "User ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get user application list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserAccess"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/user/getBrandUsers/{brandId}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "operationId": "getBrandUsers",
+                "parameters": [
+                    {
+                        "name": "brandId",
+                        "in": "path",
+                        "description": "Brand ID",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "get brand user list",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/components/schemas/UserResource"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ActionResource": {
+                "title": "Action Resource",
+                "description": "Action Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AppBrandResource": {
+                "title": "Application Brand Resource",
+                "description": "Application Brand Resource model",
+                "properties": {
+                    "app_id": {
+                        "type": "integer"
+                    },
+                    "app_name": {
+                        "type": "string"
+                    },
+                    "brands": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "brand_id": {
+                                    "type": "integer"
+                                },
+                                "brand_name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "AppSettingResource": {
+                "title": "App Setting Resource",
+                "description": "Application Setting Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "settings": {
+                        "properties": {
+                            "app_url": {
+                                "type": "string"
+                            },
+                            "api_url": {
+                                "type": "string"
+                            },
+                            "ip": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AppUrlResource": {
+                "title": "Application Info Resource",
+                "description": "Application Info Resource model",
+                "properties": {
+                    "app_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "app_url": {
+                        "type": "string"
+                    },
+                    "public_key": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "AppUserResource": {
+                "title": "Application User Resource",
+                "description": "Application User Resource model",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    },
+                    "applications": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "app_url": {
+                                    "type": "string"
+                                },
+                                "public_key": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "ApplicationResource": {
+                "title": "Application Resource",
+                "description": "Application Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandResource": {
+                "title": "Brand Resource",
+                "description": "Brand Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "type": "string"
+                    },
+                    "application_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "BrandUserResource": {
+                "title": "Brand User Resource",
+                "description": "Brand User Resource model",
+                "properties": {
+                    "brand_id": {
+                        "type": "integer"
+                    },
+                    "brand_name": {
+                        "type": "string"
+                    },
+                    "users": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "user_id": {
+                                    "type": "integer"
+                                },
+                                "user_name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "EntityResource": {
+                "title": "Entity Resource",
+                "description": "Entity Resource model",
+                "properties": {
+                    "app_id": {
+                        "type": "integer"
+                    },
+                    "app_name": {
+                        "type": "string"
+                    },
+                    "entities": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "InquiryResource": {
+                "title": "Inquiry Resource",
+                "description": "Inquiry Resource model",
+                "properties": {
+                    "user_name": {
+                        "type": "string"
+                    },
+                    "role": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    },
+                    "application": {
+                        "type": "string"
+                    },
+                    "brands": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "brand": {
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "logo": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "LoginResource": {
+                "title": "Login Resource",
+                "description": "Login Resource model",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "access_token": {
+                        "type": "string"
+                    },
+                    "token_type": {
+                        "type": "string"
+                    },
+                    "expires_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "OrganizationResource": {
+                "title": "Organization Resource",
+                "description": "Organization Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "thumbnail": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "ProfileResource": {
+                "title": "Profile Resource",
+                "description": "Profile Resource model",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "avatar": {
+                        "type": "string"
+                    },
+                    "applications": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "logo": {
+                                    "type": "string"
+                                },
+                                "brands": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer"
+                                            },
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "logo": {
+                                                "type": "string"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "active_brand": {
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "logo": {
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    }
+                },
+                "type": "object"
+            },
+            "RoleResource": {
+                "title": "Role Resource",
+                "description": "Role Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "UserBrandResource": {
+                "title": "User Brand Resource",
+                "description": "User Brand Resource model",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "user_name": {
+                        "type": "string"
+                    },
+                    "brands": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "brand_id": {
+                                    "type": "integer"
+                                },
+                                "brand_name": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "UserResource": {
+                "title": "User Resource",
+                "description": "User Resource model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "Action": {
+                "title": "Action",
+                "description": "Action model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Action"
+                }
+            },
+            "Application": {
+                "title": "Application",
+                "description": "Application model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "image": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Application"
+                }
+            },
+            "ApplicationSetting": {
+                "title": "ApplicationSetting",
+                "description": "Application Setting model",
+                "properties": {
+                    "app_url": {
+                        "type": "string"
+                    },
+                    "api_url": {
+                        "type": "string"
+                    },
+                    "ip": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ApplicationSetting"
+                }
+            },
+            "ApplicationUser": {
+                "title": "ApplicationUser",
+                "description": "Application User model",
+                "properties": {
+                    "application_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "role_id": {
+                        "type": "integer"
+                    },
+                    "brand_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "ApplicationUser"
+                }
+            },
+            "Backend": {
+                "title": "Backend",
+                "description": "Backend model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "token": {
+                        "type": "string"
+                    },
+                    "expires_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Backend"
+                }
+            },
+            "Brand": {
+                "title": "Brand",
+                "description": "Brand model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    },
+                    "application_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Brand"
+                }
+            },
+            "BrandLanguage": {
+                "title": "BrandLanguage",
+                "description": "Languages index",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "primary": {
+                        "type": "integer"
+                    },
+                    "language": {
+                        "$ref": "#/components/schemas/Language"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "BrandLanguage"
+                }
+            },
+            "Entity": {
+                "title": "Entity",
+                "description": "Entity model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "application_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Entity"
+                }
+            },
+            "EntityRole": {
+                "title": "EntityRole",
+                "description": "EntityRole model",
+                "properties": {
+                    "role_id": {
+                        "type": "integer"
+                    },
+                    "entity_id": {
+                        "type": "integer"
+                    },
+                    "action_id": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "EntityRole"
+                }
+            },
+            "Language": {
+                "title": "Language",
+                "description": "Languages index",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "slug": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Language"
+                }
+            },
+            "Log": {
+                "title": "Log",
+                "description": "Log model",
+                "properties": {
+                    "app_id": {
+                        "type": "integer"
+                    },
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "role_id": {
+                        "type": "integer"
+                    },
+                    "brand_id": {
+                        "type": "integer"
+                    },
+                    "ip_address": {
+                        "type": "string"
+                    },
+                    "user_agent": {
+                        "type": "string"
+                    },
+                    "route": {
+                        "type": "string"
+                    },
+                    "method": {
+                        "type": "string"
+                    },
+                    "action": {
+                        "type": "string"
+                    },
+                    "objects": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    },
+                    "login_at": {
+                        "type": "string"
+                    },
+                    "logout_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Log"
+                }
+            },
+            "Login": {
+                "title": "Login",
+                "description": "Login model",
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Login"
+                }
+            },
+            "Organization": {
+                "title": "Organization",
+                "description": "Organization model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "logo": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Organization"
+                }
+            },
+            "PortalAccessToken": {
+                "title": "PortalAccessToken",
+                "description": "Portal Access Token model",
+                "properties": {
+                    "user_id": {
+                        "type": "integer"
+                    },
+                    "user_token": {
+                        "type": "string"
+                    },
+                    "public_key": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "PortalAccessToken"
+                }
+            },
+            "Role": {
+                "title": "Role",
+                "description": "Role model",
+                "properties": {
+                    "id": {
+                        "title": "id",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "title": "name",
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Role"
+                }
+            },
+            "RoleAccess": {
+                "title": "RoleAccess",
+                "description": "Role Access model",
+                "properties": {
+                    "app_id": {
+                        "type": "integer"
+                    },
+                    "role_id": {
+                        "type": "integer"
+                    },
+                    "entities": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "entity_id": {
+                                    "type": "integer"
+                                },
+                                "action_ids": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "RoleAccess"
+                }
+            },
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "first_name": {
+                        "type": "string"
+                    },
+                    "last_name": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "level": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "UserAccess": {
+                "title": "UserAccess",
+                "description": "User Access model",
+                "properties": {
+                    "applications": {
+                        "type": "array",
+                        "items": {
+                            "properties": {
+                                "app_id": {
+                                    "type": "integer"
+                                },
+                                "brand_id": {
+                                    "type": "integer"
+                                },
+                                "role_id": {
+                                    "type": "integer"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserAccess"
+                }
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": ""
+        }
+    ]
+}
